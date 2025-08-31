@@ -1,0 +1,33 @@
+.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title p{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.form,.url-count{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.url-count input,
+.url-count button {
+    margin-top: 8px; /* adds space above each element */
+}
+.url-count p{
+    font-size: 18px;
+}
+.website{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.website p{
+    font-size: 18px;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Cheq</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ <header>
+        <nav>
+            <!-- Navbar -->
+            <div class="logo">
+                <span class="bracket">[</span>
+                <span class="hack-text">Fit Check Admin</span>
+                <span class="bracket">]</span>
+            </div>
+        </nav>
+    </header>    
+
+<div class="main">
+    <div class="title">
+        <h2> Hi Admin!</h2>
+        <p>Scrape Following Websites Data</p>
+    </div>
+
+    <div class="form">
+        <div class="website">
+            <p>Choose the website:</p>
+            <select name="website" id="website">
+                <option value="myntra">Myntra</option>
+                <option value="ajio">NewMe</option>
+                <option value="flipkart">Savana</option>
+            </select>
+        </div>
+        <div class="url-count">
+            <p>How many Urls Are you going to add?</p>
+            <input type="number" id="urlCount" min="1" />
+            <button id="startBtn">Start</button>
+        </div>
+        
+        <div id="urlInputs" style="display:none; margin-top:50px;">
+        <input type="text" id="currentUrl" placeholder="Enter URL"/>
+        <button id="nextBtn">Next</button>
+        </div>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

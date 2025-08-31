@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSec Portfolio | Hacker's Den</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glitch-overlay"></div>
+    <header>
+        <nav>
+            <!-- Navbar -->
+            <div class="logo">
+                <span class="bracket">[</span>
+                <span class="hack-text">Mubasher Developer</span>
+                <span class="bracket">]</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="glitch-effect">HOME</a></li>
+                <li><a href="#about" class="glitch-effect">ABOUT</a></li>
+                <li><a href="#skills" class="glitch-effect">SKILLS</a></li>
+                <li><a href="#projects" class="glitch-effect">PROJECTS</a></li>
+                <li><a href="#contact" class="glitch-effect">CONTACT</a></li>
+                <li class="theme-toggle">
+                    <button id="theme-toggle-btn" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-overlay"></div>
+            <div class="matrix-rain" id="matrix-canvas"></div>
+            
+            <div class="hero-container">
+                <div class="hero-left">
+                    <div class="glitch-container">
+                        <h1 class="mega-glitch" data-text="HACK THE PLANET">Scrape Websites Data</h1>
+                        <div class="glitch-window">
+                            <div class="glitch-text">
+                                <span class="line">System Status: Active</span>
+                                <span class="line">Security Level: Maximum</span>
+                                <span class="line">Initializing Protocols...</span>
+                                <span class="line blink">_</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-subtitle">
+                        <div class="typing-container">
+                            <span class="typed-text"></span>
+                            <span class="cursor">&nbsp;</span>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle" stroke-dasharray="90, 100" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <div class="stat-number" data-target="90">0</div>
+                            </div>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle" stroke-dasharray="75, 100" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <div class="stat-number" data-target="75">0</div>
+                            </div>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle" stroke-dasharray="95, 100" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <div class="stat-number" data-target="95">0</div>
+                            </div>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                    <div class="cta-container">
+                        <a href="#projects" class="cta-button primary">
+                            <span class="button-text">View Arsenal</span>
+                            <span class="button-glitch"></span>
+                            <span class="button-label">Explore My Work</span>
+                        </a>
+                        <a href="#contact" class="cta-button secondary">
+                            <span class="button-text">Initialize Contact</span>
+                            <span class="button-glitch"></span>
+                            <span class="button-label">Get In Touch</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-right">
+                    <div class="terminal-container">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="terminal-button close"></span>
+                                <span class="terminal-button minimize"></span>
+                                <span class="terminal-button maximize"></span>
+                            </div>
+                            <div class="terminal-title">hack.exe</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="line">><span class="command"> sudo initialize</span></div>
+                            <div class="line">Accessing mainframe...</div>
+                            <div class="line">Bypassing security protocols...</div>
+                            <div class="line">Establishing secure connection...</div>
+                            <div class="line success">Access granted.</div>
+                            <div class="line">><span class="cursor">_</span></div>
+                        </div>
+                    </div>
+                    <div class="cyber-sphere">
+                        <div class="sphere-container">
+                            <div class="ring ring-1"></div>
+                            <div class="ring ring-2"></div>
+                            <div class="ring ring-3"></div>
+                            <div class="core"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">Scroll to Explore</span>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2 class="section-title" data-text="About">About</h2>
+            <div class="section-grid">
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Elite cybersecurity specialist with a passion for uncovering vulnerabilities and strengthening digital defenses. Specializing in penetration testing, security research, and ethical hacking.</p>
+                        <div class="skill-grid">
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>Penetration Testing</h3>
+                                <p>Advanced system penetration and vulnerability assessment</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-bug"></i>
+                                </div>
+                                <h3>Bug Hunting</h3>
+                                <p>Professional bug bounty hunter with proven track record</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h3>Security Research</h3>
+                                <p>Active security researcher and exploit developer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-buttons">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <span class="code-title">profile.java</span>
+                        </div>
+                        <div class="code-content">
+                            <pre><code>
+class SecuritySpecialist {
+    private:
+        vector<string> skills;
+        int experience;
+        bool available;
+    
+    public:
+        SecuritySpecialist() {
+            skills = {
+                "Penetration Testing",
+                "Vulnerability Assessment",
+                "Exploit Development",
+                "Security Research"
+            };
+            experience = 5;
+            available = true;
+        }
+};</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title" data-text="Skills">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3 class="category-title">Attack Vectors</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Web Application Security</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-line"><span data-percent="95"></span></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Network Security</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-line"><span data-percent="90"></span></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Mobile Security</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-line"><span data-percent="85"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 class="section-title" data-text="Projects">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Operation DarkNet</h3>
+                            <div class="project-tags">
+                                <span>Web Security</span>
+                                <span>Ethical Hacking</span>
+                            </div>
+                        </div>
+                        <p>Successfully identified and reported critical vulnerabilities in a major financial institution's infrastructure.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Critical Bugs</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">$50K</span>
+                                <span class="stat-label">Bounty</span>
+                            </div>
+                        </div>
+                        <a href="#" class="project-link">View Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-overlay"></div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Project Zero Day</h3>
+                            <div class="project-tags">
+                                <span>Zero Day</span>
+                                <span>Research</span>
+                            </div>
+                        </div>
+                        <p>Discovered and responsibly disclosed a zero-day vulnerability affecting millions of IoT devices.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">1M+</span>
+                                <span class="stat-label">Devices</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">CVE</span>
+                                <span class="stat-label">Published</span>
+                            </div>
+                        </div>
+                        <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-overlay"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title" data-text="Contact">Contact</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="card-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Secure Communication</h3>
+                        </div>
+                        <p>All communications are end-to-end encrypted using military-grade encryption.</p>
+                    </div>
+                    <div class="contact-methods">
+                        <a href="mailto:contact@example.com" class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>Encrypted Email</span>
+                        </a>
+                        <a href="#" class="contact-method">
+                            <i class="fab fa-telegram"></i>
+                            <span>Secure Chat</span>
+                        </a>
+                        <a href="#" class="contact-method">
+                            <i class="fas fa-key"></i>
+                            <span>PGP Key</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <div class="form-container">
+                        <div class="form-header">
+                            <div class="form-title">New Message</div>
+                            <div class="encryption-status">
+                                <i class="fas fa-lock"></i>
+                                <span>End-to-End Encrypted</span>
+                            </div>
+                        </div>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" required>
+                                <label for="name">How many Urls Are you going to add?</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" required>
+                                <label for="email">Secure Email</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" required></textarea>
+                                <label for="message">Encrypted Message</label>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Transmit Message</span>
+                                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+           
+            <a href="https://youtube.com/@mubasherdeveloper" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">&copy; 2025 | Secured with <span class="heart">❤</span> by Mubasher Developer</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
