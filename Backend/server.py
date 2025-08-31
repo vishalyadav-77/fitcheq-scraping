@@ -25,6 +25,7 @@ def sub_data():
             result = savana(urls)
 
         print("data sended")
+        print(result)
         return jsonify({"result":result}), 200
     except Exception as e:
         print("error")

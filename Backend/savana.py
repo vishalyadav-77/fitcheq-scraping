@@ -62,20 +62,30 @@ def get_savana_product_data(driver, wait, product_url):
 # --- MAIN PROGRAM ---
 def savana(a):
     urls = a
+    data2 = []
 
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
     driver = webdriver.Chrome(options=options)
-    wait = WebDriverWait(driver, 10)  # max 10 seconds
+    wait = WebDriverWait(driver, 20)  # max 10 seconds
 
     try:
         for idx, url in enumerate(urls, 1):
             title, price, image_urls, color_ids = get_savana_product_data(driver, wait, url)
 
-            print(f"\n================ Product {idx} =================")
+            # Merge price into title nicely
             if title and price:
-                print(f"✅ Product Title: {title}")
-                print(f"💰 Product Price: {price}\n")
+                full_title = f"{title} – {price}"
+            elif title:
+                full_title = title
+            elif price:
+                full_title = price
+            else:
+                full_title = ""
+
+            print(f"\n================ Product {idx} =================")
+            if full_title:
+                print(f"✅ Product Title: {full_title}")
 
             if image_urls:
                 print(f"🖼 Found {len(image_urls)} images for the first variant (colorId: {color_ids[0]}):\n")
@@ -86,5 +96,17 @@ def savana(a):
 
             if color_ids:
                 print(f"🎨 Available colorIds for this product: {color_ids}")
+
+            # --- Save result in data2 ---
+            product_dict = {
+                "title": full_title,
+                "url": url,
+                "images": image_urls if image_urls else []
+            }
+            data2.append(product_dict)
+
     finally:
         driver.quit()
+
+    return data2
+

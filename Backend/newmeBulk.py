@@ -43,10 +43,10 @@ def get_newme_product_data(driver, wait, product_url):
 
 
 # --- MAIN PROGRAM ---
-
 # Ask user first for URLs
 def newme(a):
     urls = a
+    data2 = []
 
     # --- Then open browser ---
     options = webdriver.ChromeOptions()
@@ -59,10 +59,19 @@ def newme(a):
         for idx, url in enumerate(urls, 1):
             title, price, image_urls = get_newme_product_data(driver, wait, url)
 
-            print(f"\n================ Product {idx} =================")
+            # merge price into title neatly
             if title and price:
-                print(f"✅ Product Title: {title}")
-                print(f"💰 Product Price: {price}\n")
+                full_title = f"{title} – {price}"
+            elif title:
+                full_title = title
+            elif price:
+                full_title = price
+            else:
+                full_title = ""
+
+            print(f"\n================ Product {idx} =================")
+            if full_title:
+                print(f"✅ Product Title: {full_title}")
 
             if image_urls:
                 print(f"🖼 Found {len(image_urls)} product image URLs:\n")
@@ -71,5 +80,15 @@ def newme(a):
             else:
                 print("❌ No product images found.")
 
+            # --- Save result in data2 ---
+            product_dict = {
+                "title": full_title,
+                "url": url,
+                "images": image_urls if image_urls else []
+            }
+            data2.append(product_dict)
+
     finally:
         driver.quit()
+
+    return data2

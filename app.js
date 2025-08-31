@@ -21,6 +21,9 @@ startBtn.addEventListener("click", () => {
     nextBtn.textContent = "Next";
     currentUrlInput.value = "";
     currentUrlInput.focus();
+    if (totalUrls === 1) {
+        nextBtn.textContent = "Submit";
+    }
 });
 
 nextBtn.addEventListener("click", () => {
@@ -42,19 +45,46 @@ nextBtn.addEventListener("click", () => {
         const selectedWebsite = document.getElementById("website").value;
         // submit logic
         // All URLs submitted – POST to endpoint
-        fetch("https://your-api-endpoint.com/submit", {
+        fetch("http://127.0.0.1:5000/submit", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                website: selectedWebsite,
-                urls: urls }) // send as JSON
+                "website": selectedWebsite,
+                "urls": urls }) // send as JSON
         })
         .then(response => response.json())
         .then(data => {
             console.log("Server response:", data);
             alert("URLs submitted successfully!");
+
+            const outputDiv = document.getElementById("result-div");
+            let items = data.result;
+
+            items.forEach((item, index) => {
+            // Title
+            let pTitle = document.createElement("p");
+            pTitle.textContent = `Title ${index + 1}: ${item.title}`;
+            outputDiv.appendChild(pTitle);
+
+            // URL
+            let pUrl = document.createElement("p");
+            pUrl.textContent = `URL ${index + 1}: ${item.url}`;
+            outputDiv.appendChild(pUrl);
+
+            // Images
+            item.images.forEach((img, i) => {
+                let pImg = document.createElement("p");
+                pImg.textContent = `Image ${i + 1}: ${img}`;
+                outputDiv.appendChild(pImg);
+            });
+
+            // Add a separator line
+            let hr = document.createElement("hr");
+            outputDiv.appendChild(hr);
+            });
+
             // Reset UI
             urlInputsDiv.style.display = "none";
             urlCountInput.value = "";

@@ -31,3 +31,15 @@
 .website p{
     font-size: 18px;
 }
+#result-text{
+    display: flex;
+    align-items: center;
+}
+#result-div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    max-width: 600px;   /* limit how wide it can go */
+    width: 90%;         /* responsive – shrink on small screens */
+    word-wrap: break-word; /* make sure long text breaks */
+}

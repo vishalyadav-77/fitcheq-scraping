@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 import re
 
+
 def fetch_images_from_url(driver, product_url):
     driver.get(product_url)
 
@@ -50,6 +51,7 @@ def fetch_images_from_url(driver, product_url):
 
 def myntra(a):
     product_urls = a
+    data2 = []
 
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
@@ -70,9 +72,15 @@ def myntra(a):
             full_name, imgs = data
             print(f"URL{i} : {url}")
             print(f"TITLE : {full_name}")
+            var_images=[]
             for j, img in enumerate(imgs, 1):
+                var_images.append(f"{j}. {img}")
                 print(f"{j}. {img}")
             print()  # One extra line for spacing
+            dict={"url" : url,"title": full_name,"images":var_images}
+            data2.append(dict)
+
+        return data2
 
 
     finally:
