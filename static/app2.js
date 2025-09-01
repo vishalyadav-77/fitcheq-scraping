@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // POST to backend
-            fetch("http://127.0.0.1:5000/submit", {
+            fetch("/submit", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ website: selectedWebsite, urls })
