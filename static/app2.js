@@ -67,7 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ website: selectedWebsite, urls })
             })
-            .then(res => res.json())
+            .then(res => {
+                 if(!res.ok) {
+                        // try to parse JSON error if possible, else throw status text
+                        return res.text().then(text => {
+                            let msg;
+                            try {
+                                msg = JSON.parse(text).error || text;
+                            } catch {
+                                msg = text;
+                            }
+                            throw new Error(`Server error (${res.status}): ${msg}`);
+                        });
+                    }
+                    return res.json();
+            })
             .then(data => {
                 console.log("Server response:", data);
                 alert("URLs submitted successfully!");

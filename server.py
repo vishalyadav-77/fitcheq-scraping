@@ -33,7 +33,7 @@ def sub_data():
         return jsonify({"result":result}), 200
     except Exception as e:
         print("error")
-        return jsonify({"error":str(e)})
+        return jsonify({"error":str(e)}), 500
     
 if __name__ == '__main__':
     app.run(debug=True)
