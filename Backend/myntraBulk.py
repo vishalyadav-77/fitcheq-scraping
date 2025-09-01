@@ -74,7 +74,7 @@ def myntra(a):
             print(f"TITLE : {full_name}")
             var_images=[]
             for j, img in enumerate(imgs, 1):
-                var_images.append(f"{j}. {img}")
+                var_images.append(f"{img}")
                 print(f"{j}. {img}")
             print()  # One extra line for spacing
             dict={"url" : url,"title": full_name,"images":var_images}
