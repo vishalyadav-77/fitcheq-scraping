@@ -1,14 +1,30 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+import logging
 import tempfile
+from selenium import webdriver
+from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+# ==============================
+# Logging setup
+# ==============================
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.StreamHandler(),                # logs to Render console
+        logging.FileHandler("selenium.log")     # logs also saved to file
+    ]
+)
+
+
 def get_newme_product_data(driver, wait, product_url):
     try:
         driver.get(product_url)
-        print(f"\n⚙️ Processing URL: {product_url}")
+        logging.info(f"⚙️ Processing URL: {product_url}")
 
         # --- Explicit wait for product info container (title + price) ---
         info_container = wait.until(
@@ -40,35 +56,37 @@ def get_newme_product_data(driver, wait, product_url):
         return title, price, list(set(img_urls))  # remove duplicates
 
     except Exception as e:
-        print(f"❌ Error processing {product_url}: {e}")
+        logging.error(f"❌ Error processing {product_url}: {e}")
         return None, None, []
 
 
-# --- MAIN PROGRAM ---
-# Ask user first for URLs
 def newme(a):
     urls = a
     data2 = []
 
-    # --- Then open browser ---
-    options = webdriver.ChromeOptions()
-    options.add_argument("--start-maximized")
-
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")  # always headless on server
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    # create a unique temporary user data dir
-    tmp_user_data_dir = tempfile.mkdtemp()
-
-    chrome_options.add_argument(f"--user-data-dir={tmp_user_data_dir}")
-
-    driver = webdriver.Chrome(options=chrome_options)
-    
-    wait = WebDriverWait(driver, 10)  # max 10 seconds for explicit waits
+    logging.info("🚀 Starting Chrome for Newme scraping...")
 
     try:
-        # Process each URL
+        chrome_options = Options()
+        chrome_options.add_argument("--headless=new")   # headless mode
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-software-rasterizer")
+        chrome_options.add_argument("--window-size=1920x1080")
+
+        # create a unique temporary user data dir
+        tmp_user_data_dir = tempfile.mkdtemp()
+        chrome_options.add_argument(f"--user-data-dir={tmp_user_data_dir}")
+
+        driver = webdriver.Chrome(options=chrome_options)
+        wait = WebDriverWait(driver, 10)  # max 10 seconds per wait
+
+    except WebDriverException as e:
+        logging.error(f"❌ Failed to start Chrome: {e}")
+        return []
+
+    try:
         for idx, url in enumerate(urls, 1):
             title, price, image_urls = get_newme_product_data(driver, wait, url)
 
@@ -82,18 +100,15 @@ def newme(a):
             else:
                 full_title = ""
 
-            print(f"\n================ Product {idx} =================")
+            logging.info(f"================ Product {idx} =================")
             if full_title:
-                print(f"✅ Product Title: {full_title}")
+                logging.info(f"✅ Product Title: {full_title}")
 
             if image_urls:
-                print(f"🖼 Found {len(image_urls)} product image URLs:\n")
-                for i, img in enumerate(image_urls, 1):
-                    print(f"{i}. {img}\n")
+                logging.info(f"🖼 Found {len(image_urls)} product image URLs")
             else:
-                print("❌ No product images found.")
+                logging.warning("❌ No product images found.")
 
-            # --- Save result in data2 ---
             product_dict = {
                 "title": full_title,
                 "url": url,
@@ -103,5 +118,6 @@ def newme(a):
 
     finally:
         driver.quit()
+        logging.info("🛑 Chrome closed.")
 
     return data2
