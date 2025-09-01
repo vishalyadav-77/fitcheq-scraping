@@ -21,16 +21,17 @@ def sub_data():
         if not web_name :
             return jsonify({"error": "Missing fields"}), 400
         
-        if web_name == "myntra":
-            result = myntra(urls)
-        elif web_name == "newme":
-            result = newme(urls)
-        elif web_name == "savana":
-            result = savana(urls)
+        # if web_name == "myntra":
+        #     result = myntra(urls)
+        # elif web_name == "newme":
+        #     result = newme(urls)
+        # elif web_name == "savana":
+        #     result = savana(urls)
 
         print("data sended")
-        print(result)
-        return jsonify({"result":result}), 200
+        # print(result)
+        return jsonify({"result":"ok"}), 200
+        # return jsonify({"result":result}), 200
     except Exception as e:
         print("error")
         return jsonify({"error":str(e)}), 500
