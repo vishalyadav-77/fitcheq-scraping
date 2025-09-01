@@ -1,4 +1,6 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import tempfile
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -51,7 +53,18 @@ def newme(a):
     # --- Then open browser ---
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
-    driver = webdriver.Chrome(options=options)
+
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # always headless on server
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    # create a unique temporary user data dir
+    tmp_user_data_dir = tempfile.mkdtemp()
+
+    chrome_options.add_argument(f"--user-data-dir={tmp_user_data_dir}")
+
+    driver = webdriver.Chrome(options=chrome_options)
+    
     wait = WebDriverWait(driver, 10)  # max 10 seconds for explicit waits
 
     try:
